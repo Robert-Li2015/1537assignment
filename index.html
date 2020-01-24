@@ -1,60 +1,149 @@
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Index</title>
+    <style>
+      body {
+
+        max-width: 60%;
+      }
+      ul{
+        margin :0px;
+      }
+
+      div {
+        margin: 0px;
+      }
+
+      .intro {
+        font-size: 1.2em;
+        font-style: italic;
+
+      }
+
+      .intro:hover{
+        color: rgb(118, 3, 201);
+      }
+
+      img {
+        float: left;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      div:hover{
+        background-color: goldenrod;
+      }
+
+      .comp1537 {
+        background-color: rgb(195, 240, 194);
+
+      }
+
+      .comp1510 {
+        background-color: rgb(177, 189, 216);
+
+      }
+
+      .comp1712 {
+        background-color: rgb(236, 201, 236);
+
+      }
+
+      .comp1100 {
+        background-color: rgb(232, 247, 150);
+
+      }
+
+    </style>
   </head>
 
   <body>
-    <h1>Botao Li (Robert)</h1>
+    <h1 style="text-align: center;">Botao Li (Robert)</h1>
     <h2>A bit about me</h2>
-    <p>
-      <img
-        src="images/photo.jpeg"
-        alt="personal photo"
-        width="220"
-        height="150"
-      />
-      “My name is Robert Li, and I'm currently looking for a job in youth
-      services. <br/>I have 10 years of experience working in an institute. I have a
-      bachelor’s degree in outdoor education.
+
+    <img src="images/photo.jpeg" alt="personal photo" width="220" height="150" />
+    <p class="intro">
+      <br>“My name is Robert Li, and I'm currently looking for a job in youth
+      services. I have 10 years of experience working in an institute.I have a
+      bachelor’s degree in outdoor education.<br><br><br>
     </p>
     <h2>
-      The list courses I am taking:
+      The courses I am taking:
     </h2>
 
     <ul>
-      <li>
-        <a href="https://www.bcit.ca/study/outlines/comp1537">
-          COMP1537 web development</a
-        >
-      </li>
-      <li>
-        <a href="https://www.bcit.ca/study/outlines/comp1510">
-          COMP1510 java design</a
-        >
-      </li>
-      <li>
-        <a href="https://www.bcit.ca/study/outlines/comp1100">
-          COMP1537 CST foundation</a
-        >
-      </li>
-      <li>
-        <a href="https://www.bcit.ca/study/outlines/comp1712">
-          COMP1712 System analysis</a
-        >
-      </li>
+      <a href="https://www.bcit.ca/study/outlines/comp1537">
+        <div class="comp1537">
+          <br>
+          <li>
+            <strong> COMP1537 web development<br><br></strong>
+
+            This course is a web design and programming course with an emphasis on good planning,
+            interface design,multimedia,client-side scripting with JavaScript,
+            server-side scripting,and best practices(more) <br><br>
+          </li>
+        </div>
+      </a>
+      </br>
+
+      <a href="https://www.bcit.ca/study/outlines/comp1510">
+        <div class="comp1510">
+          <br>
+          <li>
+            <strong> COMP1510 java design<br><br></strong>
+            This course is a web design and programming course with an emphasis on good planning,
+            interface design,multimedia,client-side scripting with JavaScript,
+            server-side scripting,and best practices(more)<br><br>
+          </li>
+        </div>
+      </a>
+      <br>
+
+      <a href="https://www.bcit.ca/study/outlines/comp1510">
+        <div class="comp1712">
+          <br>
+          <li>
+            <strong> COMP1712 System analysis<br><br></strong>
+            This course is a web design and programming course with an emphasis on good planning,
+            interface design,multimedia,client-side scripting with JavaScript,
+            server-side scripting,and best practices(more)<br><br>
+          </li>
+        </div>
+      </a>
+      <br>
+
+      <a href="https://www.bcit.ca/study/outlines/comp1510">
+        <div class="comp1100">
+          <br>
+          <li>
+            <strong> COMP1100 CST foundation<br><br></strong>
+            This course is a web design and programming course with an emphasis on good planning,
+            interface design,multimedia,client-side scripting with JavaScript,
+            server-side scripting,and best practices(more)<br><br>
+          </li>
+        </div>
+      </a>
+      <br>
+
     </ul>
 
-    <a href="http://www.bcit.ca"
-      ><img src="images/bcit.png" alt="BCIT"/ width="100" height="60"></a
-    >
+    <a href="http://www.bcit.ca"><img src="images/bcit.png" alt="BCIT"/ width="100" height="80"></a>
 
     <h3>
-      Here is my <a href="resume.html">resume</a>, or you can
-      <a href="src/resume.pdf">download</a> it.
+      Here is my <a href="resume.html" style="text-decoration:blue underline; color: blue;"><i>resume</i> </a>, or you
+      can
+      <a href="src/resume.pdf;"><u> <i>
+            <font color="blue">download</font>
+          </i></u> </a> it.
     </h3>
-    <h3>This is my <a href="card.html">post card.</a></h3>
+    <h3>This is my <a href="card.html" style="text-decoration:underline blue; color: blue;"><i> post card.</i></a></h3>
   </body>
+
 </html>
