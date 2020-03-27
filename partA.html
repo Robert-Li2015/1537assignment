@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="tt"></p>
+    <script>
+      document.getElementById("tt").innerHTML =
+        "How many buttons to create?<br>";
+      let box = document.createElement("INPUT");
+      box.type = "text";
+      box.id = "inbox";
+      document.body.appendChild(box);
+
+      let btn = document.createElement("button");
+      btn.id = "clicker";
+      btn.innerHTML = "Go!";
+      btn.onclick = gerNumOfBtn();
+      document.body.appendChild(btn);
+
+      function Buttons() {
+        this.btn = document.createElement("button");
+        this.btn.style.backgroundColor = "rgb" + getRandomColor();
+        this.btn.style.width = "120px";
+        this.btn.style.height = "60px";
+        this.btn.style.position = "fixed";
+
+        this.setLocation = function() {
+          let W =
+            window.innerWidth ||
+            document.documentElement.clientWidth ||
+            document.body.clientWidth;
+          let H =
+            window.innerHeight ||
+            document.documentElement.clientHeight ||
+            document.body.clientHeight;
+          this.btn.style.left =
+            Math.floor(Math.random() * (W - parseInt(this.btn.style.width))) +
+            "px";
+          this.btn.style.top =
+            Math.floor(Math.random() * (H - parseInt(this.btn.style.height))) +
+            "px";
+        };
+
+        this.initial = function() {
+          this.setLocation();
+          document.body.appendChild(this.btn);
+        };
+      }
+
+      function getRandomColor() {
+        let randomR = Math.floor(Math.random() * 255);
+        let randomG = Math.floor(Math.random() * 255);
+        let randomB = Math.floor(Math.random() * 255);
+        return "(" + randomR + ", " + randomG + ", " + randomB + ")";
+      }
+
+      function gerNumOfBtn() {
+        return function() {
+          let n = parseInt(document.getElementById("inbox").value);
+          if (n < 5 || n > 100 || isNaN(n)) {
+                    tt.innerHTML = "Error: Please enter a number from 5 - 100";
+                    document.getElementById("inbox").value = "";
+                }
+                else {
+                    
+                  generateButtons(n);
+                }
+
+        };
+      }
+
+      function generateButtons(num) {
+        let arrayButtons = [];
+
+        for (let i = 0; i < num; i++) {
+          let buttons = new Buttons();
+
+          buttons.initial();
+
+          arrayButtons.push(buttons);
+
+          setInterval(function() {
+            arrayButtons[i].setLocation();
+          }, 2000);
+        }
+      }
+    </script>
+  </body>
+</html>

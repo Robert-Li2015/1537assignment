@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p id="tt"></p>
+
+    <script>
+      let intro = document.getElementById("tt");
+      intro.innerHTML = "Enter a number from 2-10. <br>";
+      let box = document.createElement("INPUT");
+      box.type = "text";
+      box.id = "inbox";
+      document.body.appendChild(box);
+
+      let goBtn = document.createElement("button");
+      goBtn.id = "go-Btn";
+      goBtn.innerHTML = "Go!";
+      document.body.appendChild(goBtn);
+
+      let hintBtn = document.createElement("button");
+      hintBtn.id = "hint-Btn";
+      hintBtn.innerHTML = "Show Hint!";
+      document.body.appendChild(hintBtn);
+
+      let inBox = document.getElementById("inbox");
+      let Height;
+      let Width;
+      let count = 1;
+      let currentOrder = 1;
+      let initLeft = 50;
+      let initTop = 100;
+      let numberOfButtons;
+      let arrayButtons = [];
+
+      function Button() {
+        this.btn = document.createElement("button");
+
+        this.btn.style.width = "120px";
+        this.btn.style.height = "60px";
+        this.btn.style.position = "fixed";
+        this.btn.style.backgroundColor = "rgb" + randomColor();
+        this.btn.style.color = "black";
+        this.btn.style.fontSize = "25px";
+
+        this.btn.id = count;
+        this.btn.innerHTML = this.btn.id;
+
+        this.setLocation = function() {
+          browserSize();
+          this.btn.style.left =
+            Math.floor(
+              Math.random() * (Width - parseInt(this.btn.style.width))
+            ) + "px";
+          this.btn.style.top =
+            Math.floor(
+              Math.random() * (Height - parseInt(this.btn.style.height))
+            ) + "px";
+          this.btn.disabled = false;
+        };
+
+        this.initPosition = function() {
+          this.btn.style.left = initLeft + "px";
+          this.btn.style.top = initTop + "px";
+          document.body.appendChild(this.btn);
+
+          this.btn.disabled = true;
+          count++;
+          this.nextPositon();
+        };
+
+        this.nextPositon = function() {
+          browserSize();
+          initLeft += parseInt(this.btn.style.width);
+          if (initLeft >= Width - parseInt(this.btn.style.width)) {
+            initLeft = 0;
+            initTop += parseInt(this.btn.style.height);
+          }
+        };
+
+        let Ipress = this;
+        this.btn.onclick = function() {
+          Ipress.pressInOrder();
+        };
+
+        this.showOrder = function() {
+          this.btn.innerHTML = this.btn.id;
+        };
+
+        this.hideOrder = function() {
+          this.btn.innerHTML = "";
+        };
+
+        this.pressInOrder = function() {
+          if (this.btn.id != currentOrder) {
+            intro.innerHTML = "Wrong order";
+          } else {
+            this.showOrder();
+            currentOrder++;
+            intro.innerHTML = "Great, continue...";
+            if (currentOrder > numberOfButtons) {
+              intro.innerHTML = "Excellent, you did it!";
+            }
+          }
+        };
+      }
+
+      function browserSize() {
+         Width =
+          window.innerWidth ||
+          document.documentElement.clientWidth ||
+          document.body.clientWidth;
+
+        Height =
+          window.innerHeight ||
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      }
+
+      function randomColor() {
+        let randomR = Math.floor(Math.random() * 255);
+        let randomG = Math.floor(Math.random() * 255);
+        let randomB = Math.floor(Math.random() * 255);
+        return "(" + randomR + ", " + randomG + ", " + randomB + ")";
+      }
+
+      function checkInputNumber() {
+        numberOfButtons = parseInt(inBox.value);
+
+        if (numberOfButtons < 2 || numberOfButtons > 10 || isNaN(numberOfButtons)) {
+          intro.innerHTML = "Error: Please enter a number from 2 - 10";
+          inBox.value = "";
+        } else {
+          generateButtons(numberOfButtons);
+          goBtn.style.visibility = "hidden";
+        }
+      }
+
+      function showHint() {
+        for (let i = 0; i < numberOfButtons; i++) {
+          arrayButtons[i].showOrder();
+        }
+      }
+
+      function generateButtons(n) {
+        for (let i = 0; i < n; i++) {
+          let button = new Button();
+          button.initPosition();
+          arrayButtons.push(button);
+
+          setTimeout(function() {
+            arrayButtons[i].setLocation();
+            arrayButtons[i].hideOrder();
+          }, n * 1000);
+        }
+      }
+
+      hintBtn.onclick = showHint;
+      goBtn.onclick = checkInputNumber;
+    </script>
+  </body>
+</html>
